@@ -45,6 +45,16 @@
         let height = (document.getElementById("height").value = 0);
         let result = (document.getElementById("para").innerHTML = null);
       }
+      function validateInputs() {
+        vWeight = (document.getElementById("weight").value)
+        vHeight = (document.getElementById("height").value)
+        if (vWeight == 0 || null) {
+          alert("Please input your Weight")
+        }
+        if (vHeight == 0 || null) {
+          alert("Please input your Height")
+        }
+      }
     </script>
     <style>
       .scale {
@@ -83,7 +93,7 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <button onclick="calculate(event)" class="btn btn-primary m-3">
+            <button onclick="calculate(event); validateInputs()" class="btn btn-primary m-3">
               Calculate BMI
             </button>
             <br />
