@@ -22,14 +22,15 @@
         console.log(bmi);
 
         //checking scale
+        var roundedBmi = bmi.toFixed(1);
         if (bmi <= 18) {
-          var result = "You are: Underweight";
+          var result = "You are: Underweight. "+"Your BMI: "+roundedBmi;
         } else if (bmi > 18 && bmi <= 24) {
-          result = "You are: Normal Weight";
+          result = "You are: Normal Weight. "+"Your BMI: "+roundedBmi;
         } else if (bmi > 24 && bmi <= 29) {
-          result = "You are: Overweight";
+          result = "You are: Overweight. "+"Your BMI: "+roundedBmi;
         } else if (bmi > 29) {
-          result = "You are: Obese";
+          result = "You are: Obese. "+"Your BMI: "+roundedBmi;
         } else {
           result = "Please Input Numbers";
         }
