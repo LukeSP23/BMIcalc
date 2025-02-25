@@ -10,13 +10,14 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       function calculate(event) {
         event.preventDefault();
         //assigning variable and initial calculation
-        var form = document.forms["myForm"];
-        var kg = form["weight"].value;
-        var met = form["height"].value;
+        // var form = document.forms["myForm"];
+        var kg = $("form[name='myForm'] input[name='weight']").val();
+        var met = $("form[name='myForm'] input[name='height']").val();
         met = met * met;
         bmi = kg / met;
         console.log(bmi);
@@ -24,19 +25,19 @@
         //checking scale
         var roundedBmi = bmi.toFixed(1);
         if (bmi <= 18) {
-          var result = "You are: Underweight. "+"Your BMI: "+roundedBmi;
+          var result = "You are: Underweight. " + "Your BMI: " + roundedBmi;
         } else if (bmi > 18 && bmi <= 24) {
-          result = "You are: Normal Weight. "+"Your BMI: "+roundedBmi;
+          result = "You are: Normal Weight. " + "Your BMI: " + roundedBmi;
         } else if (bmi > 24 && bmi <= 29) {
-          result = "You are: Overweight. "+"Your BMI: "+roundedBmi;
+          result = "You are: Overweight. " + "Your BMI: " + roundedBmi;
         } else if (bmi > 29) {
-          result = "You are: Obese. "+"Your BMI: "+roundedBmi;
+          result = "You are: Obese. " + "Your BMI: " + roundedBmi;
         } else {
           result = "Please Input Numbers";
         }
 
         console.log(result);
-        let para = (document.getElementById("para").innerHTML = result);
+        $("#para").html(result);
       }
 
       function zero(event) {
@@ -47,13 +48,13 @@
         let result = (document.getElementById("para").innerHTML = null);
       }
       function validateInputs() {
-        vWeight = (document.getElementById("weight").value)
-        vHeight = (document.getElementById("height").value)
+        vWeight = document.getElementById("weight").value;
+        vHeight = document.getElementById("height").value;
         if (vWeight == 0 || null) {
-          alert("Please input your Weight")
+          alert("Please input your Weight");
         }
         if (vHeight == 0 || null) {
-          alert("Please input your Height")
+          alert("Please input your Height");
         }
       }
     </script>
@@ -94,7 +95,10 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <button onclick="calculate(event); validateInputs()" class="btn btn-primary m-3">
+            <button
+              onclick="calculate(event); validateInputs()"
+              class="btn btn-primary m-3"
+            >
               Calculate BMI
             </button>
             <br />
